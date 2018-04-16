@@ -1,6 +1,6 @@
 # VPC and Subnet
 resource "aws_vpc" "simple-server" {
-  cidr_block = "172.31.0.0/16"
+  cidr_block = "${var.vpc_cidr}"
 
   tags {
     Name = "simple-server"
@@ -8,7 +8,7 @@ resource "aws_vpc" "simple-server" {
 }
 
 resource "aws_subnet" "simple-server" {
-  cidr_block = "172.31.16.0/20"
+  cidr_block = ""
   vpc_id = "${aws_vpc.simple-server.id}"
   map_public_ip_on_launch = true
 
