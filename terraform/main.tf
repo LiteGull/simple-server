@@ -3,7 +3,17 @@ resource "aws_instance" "simple-server" {
   instance_type = "t2.micro"
   key_name = "MyEc2KeyPair"
   vpc_security_group_ids = ["${aws_security_group.simple-server.id}"]
-  user_data = "${file("user_data/.puppet_user_data.sh")}"
+  user_data = "${data.local_file.user-data.content}"
+
+  provisioner "file" {
+    source      = "../puppet"
+    destination = "/home/ec2-user"
+    connection {
+      type     = "ssh"
+      user     = "ec2-user"
+      private_key = "${file(${var.key})}"
+    }
+  }
 
   tags {
     Name = "simple-server"
