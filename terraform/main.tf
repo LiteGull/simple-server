@@ -11,7 +11,7 @@ resource "aws_instance" "simple-server" {
     connection {
       type     = "ssh"
       user     = "ec2-user"
-      private_key = "${file(${var.key})}"
+      private_key = "${data.local_file.key}"
     }
   }
 
