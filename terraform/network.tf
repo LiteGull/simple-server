@@ -8,7 +8,7 @@ resource "aws_vpc" "simple-server" {
 }
 
 resource "aws_subnet" "simple-server" {
-  cidr_block = ""
+  cidr_block = "${var.subnet_cidr}"
   vpc_id = "${aws_vpc.simple-server.id}"
   map_public_ip_on_launch = true
 
