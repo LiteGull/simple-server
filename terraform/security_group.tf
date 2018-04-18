@@ -37,7 +37,7 @@ resource "aws_security_group_rule" "simple-server-in-ssh" {
 
 resource "aws_security_group_rule" "simple-server-out" {
   from_port = 0
-  protocol = "tcp"
+  protocol = "-1"
   security_group_id = "${aws_security_group.simple-server.id}"
   to_port = 0
   type = "egress"
