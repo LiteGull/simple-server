@@ -1,6 +1,6 @@
 # Security Groups
 resource "aws_security_group" "simple-server" {
-  name        = "allow_all"
+  name        = "simple-server"
   description = "Allow all inbound traffic"
 
   tags {
@@ -43,4 +43,3 @@ resource "aws_security_group_rule" "simple-server-out" {
   type = "egress"
   cidr_blocks = ["0.0.0.0/0"]
 }
-
